@@ -1,0 +1,34 @@
+# Laravel specific
+/vendor/
+.env
+.env.*
+/storage/*
+!/storage/app/public
+/public/storage
+/public/build
+/public/mix-manifest.json
+
+# Node.js specific
+/node_modules/
+
+# Vite or Webpack specific
+/public/build/
+.vite/
+dist/
+*.tsbuildinfo
+
+# Log files
+*.log
+*.log.*
+
+# IDE-specific files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# PHPUnit result cache
+phpunit.result.cache
+
+# Coverage reports
+coverage/
