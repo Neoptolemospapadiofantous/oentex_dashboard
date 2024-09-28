@@ -355,7 +355,7 @@
                         <div class="flex items-center">
                             <icon-menu-dashboard class="shrink-0" />
 
-                            <span class="px-2">{{ $t('dashboard') }}</span>
+                            <span class="px-2">{{ translate('dashboard') }}</span>
                         </div>
                         <div class="right_arrow">
                             <icon-caret-down />
@@ -363,16 +363,16 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/">{{ $t('sales') }}</router-link>
+                            <router-link to="/">{{ translate('sales') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/analytics">{{ $t('analytics') }}</router-link>
+                            <router-link to="/analytics">{{ translate('analytics') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/finance">{{ $t('finance') }}</router-link>
+                            <router-link to="/finance">{{ translate('finance') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/crypto">{{ $t('crypto') }}</router-link>
+                            <router-link to="/crypto">{{ translate('crypto') }}</router-link>
                         </li>
                     </ul>
                 </li>
@@ -381,7 +381,7 @@
                         <div class="flex items-center">
                             <icon-menu-apps class="shrink-0" />
 
-                            <span class="px-2">{{ $t('apps') }}</span>
+                            <span class="px-2">{{ translate('apps') }}</span>
                         </div>
                         <div class="right_arrow">
                             <icon-caret-down />
@@ -389,26 +389,26 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/apps/chat">{{ $t('chat') }}</router-link>
+                            <router-link to="/apps/chat">{{ translate('chat') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/apps/mailbox">{{ $t('mailbox') }}</router-link>
+                            <router-link to="/apps/mailbox">{{ translate('mailbox') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/apps/todolist">{{ $t('todo_list') }}</router-link>
+                            <router-link to="/apps/todolist">{{ translate('todo_list') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/apps/notes">{{ $t('notes') }}</router-link>
+                            <router-link to="/apps/notes">{{ translate('notes') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/apps/scrumboard">{{ $t('scrumboard') }}</router-link>
+                            <router-link to="/apps/scrumboard">{{ translate('scrumboard') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/apps/contacts">{{ $t('contacts') }}</router-link>
+                            <router-link to="/apps/contacts">{{ translate('contacts') }}</router-link>
                         </li>
                         <li class="relative">
                             <a href="javascript:;"
-                                >{{ $t('invoice') }}
+                                >{{ translate('invoice') }}
                                 <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
                                     <icon-caret-down />
                                 </div>
@@ -417,21 +417,21 @@
                                 class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
                             >
                                 <li>
-                                    <router-link to="/apps/invoice/list">{{ $t('list') }}</router-link>
+                                    <router-link to="/apps/invoice/list">{{ translate('list') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/apps/invoice/preview">{{ $t('preview') }}</router-link>
+                                    <router-link to="/apps/invoice/preview">{{ translate('preview') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/apps/invoice/add">{{ $t('add') }}</router-link>
+                                    <router-link to="/apps/invoice/add">{{ translate('add') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/apps/invoice/edit">{{ $t('edit') }}</router-link>
+                                    <router-link to="/apps/invoice/edit">{{ translate('edit') }}</router-link>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <router-link to="/apps/calendar">{{ $t('calendar') }}</router-link>
+                            <router-link to="/apps/calendar">{{ translate('calendar') }}</router-link>
                         </li>
                     </ul>
                 </li>
@@ -439,7 +439,7 @@
                     <a href="javascript:;" class="nav-link">
                         <div class="flex items-center">
                             <icon-menu-components class="shrink-0" />
-                            <span class="px-2">{{ $t('components') }}</span>
+                            <span class="px-2">{{ translate('components') }}</span>
                         </div>
                         <div class="right_arrow">
                             <icon-caret-down />
@@ -447,46 +447,46 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/components/tabs">{{ $t('tabs') }}</router-link>
+                            <router-link to="/components/tabs">{{ translate('tabs') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/accordions">{{ $t('accordions') }}</router-link>
+                            <router-link to="/components/accordions">{{ translate('accordions') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/modals">{{ $t('modals') }}</router-link>
+                            <router-link to="/components/modals">{{ translate('modals') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/cards">{{ $t('cards') }}</router-link>
+                            <router-link to="/components/cards">{{ translate('cards') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/carousel">{{ $t('carousel') }}</router-link>
+                            <router-link to="/components/carousel">{{ translate('carousel') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/countdown">{{ $t('countdown') }}</router-link>
+                            <router-link to="/components/countdown">{{ translate('countdown') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/counter">{{ $t('counter') }}</router-link>
+                            <router-link to="/components/counter">{{ translate('counter') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/sweetalert">{{ $t('sweet_alerts') }}</router-link>
+                            <router-link to="/components/sweetalert">{{ translate('sweet_alerts') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/timeline">{{ $t('timeline') }}</router-link>
+                            <router-link to="/components/timeline">{{ translate('timeline') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/notifications">{{ $t('notifications') }}</router-link>
+                            <router-link to="/components/notifications">{{ translate('notifications') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/media-object">{{ $t('media_object') }}</router-link>
+                            <router-link to="/components/media-object">{{ translate('media_object') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/list-group">{{ $t('list_group') }}</router-link>
+                            <router-link to="/components/list-group">{{ translate('list_group') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/pricing-table">{{ $t('pricing_tables') }}</router-link>
+                            <router-link to="/components/pricing-table">{{ translate('pricing_tables') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/components/lightbox">{{ $t('lightbox') }}</router-link>
+                            <router-link to="/components/lightbox">{{ translate('lightbox') }}</router-link>
                         </li>
                     </ul>
                 </li>
@@ -494,7 +494,7 @@
                     <a href="javascript:;" class="nav-link">
                         <div class="flex items-center">
                             <icon-menu-elements class="shrink-0" />
-                            <span class="px-2">{{ $t('elements') }}</span>
+                            <span class="px-2">{{ translate('elements') }}</span>
                         </div>
                         <div class="right_arrow">
                             <icon-caret-down />
@@ -502,58 +502,58 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/elements/alerts">{{ $t('alerts') }}</router-link>
+                            <router-link to="/elements/alerts">{{ translate('alerts') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/avatar">{{ $t('avatar') }}</router-link>
+                            <router-link to="/elements/avatar">{{ translate('avatar') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/badges">{{ $t('badges') }}</router-link>
+                            <router-link to="/elements/badges">{{ translate('badges') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/breadcrumbs">{{ $t('breadcrumbs') }}</router-link>
+                            <router-link to="/elements/breadcrumbs">{{ translate('breadcrumbs') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/buttons">{{ $t('buttons') }}</router-link>
+                            <router-link to="/elements/buttons">{{ translate('buttons') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/buttons-group">{{ $t('button_groups') }}</router-link>
+                            <router-link to="/elements/buttons-group">{{ translate('button_groups') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/color-library">{{ $t('color_library') }}</router-link>
+                            <router-link to="/elements/color-library">{{ translate('color_library') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/dropdown">{{ $t('dropdown') }}</router-link>
+                            <router-link to="/elements/dropdown">{{ translate('dropdown') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/infobox">{{ $t('infobox') }}</router-link>
+                            <router-link to="/elements/infobox">{{ translate('infobox') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/jumbotron">{{ $t('jumbotron') }}</router-link>
+                            <router-link to="/elements/jumbotron">{{ translate('jumbotron') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/loader">{{ $t('loader') }}</router-link>
+                            <router-link to="/elements/loader">{{ translate('loader') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/pagination">{{ $t('pagination') }}</router-link>
+                            <router-link to="/elements/pagination">{{ translate('pagination') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/popovers">{{ $t('popovers') }}</router-link>
+                            <router-link to="/elements/popovers">{{ translate('popovers') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/progress-bar">{{ $t('progress_bar') }}</router-link>
+                            <router-link to="/elements/progress-bar">{{ translate('progress_bar') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/search">{{ $t('search') }}</router-link>
+                            <router-link to="/elements/search">{{ translate('search') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/tooltips">{{ $t('tooltips') }}</router-link>
+                            <router-link to="/elements/tooltips">{{ translate('tooltips') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/treeview">{{ $t('treeview') }}</router-link>
+                            <router-link to="/elements/treeview">{{ translate('treeview') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/elements/typography">{{ $t('typography') }}</router-link>
+                            <router-link to="/elements/typography">{{ translate('typography') }}</router-link>
                         </li>
                     </ul>
                 </li>
@@ -561,7 +561,7 @@
                     <a href="javascript:;" class="nav-link">
                         <div class="flex items-center">
                             <icon-menu-datatables class="shrink-0" />
-                            <span class="px-2">{{ $t('tables') }}</span>
+                            <span class="px-2">{{ translate('tables') }}</span>
                         </div>
                         <div class="right_arrow">
                             <icon-caret-down />
@@ -569,11 +569,11 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/tables">{{ $t('tables') }}</router-link>
+                            <router-link to="/tables">{{ translate('tables') }}</router-link>
                         </li>
                         <li class="relative">
                             <a href="javascript:;"
-                                >{{ $t('datatables') }}
+                                >{{ translate('datatables') }}
                                 <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
                                     <icon-caret-down />
                                 </div>
@@ -582,46 +582,46 @@
                                 class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
                             >
                                 <li>
-                                    <router-link to="/datatables/basic">{{ $t('basic') }}</router-link>
+                                    <router-link to="/datatables/basic">{{ translate('basic') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/advanced">{{ $t('advanced') }}</router-link>
+                                    <router-link to="/datatables/advanced">{{ translate('advanced') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/skin">{{ $t('skin') }}</router-link>
+                                    <router-link to="/datatables/skin">{{ translate('skin') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/order-sorting">{{ $t('order_sorting') }}</router-link>
+                                    <router-link to="/datatables/order-sorting">{{ translate('order_sorting') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/columns-filter">{{ $t('columns_filter') }}</router-link>
+                                    <router-link to="/datatables/columns-filter">{{ translate('columns_filter') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/multi-column">{{ $t('multi_column') }}</router-link>
+                                    <router-link to="/datatables/multi-column">{{ translate('multi_column') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/multiple-tables">{{ $t('multiple_tables') }}</router-link>
+                                    <router-link to="/datatables/multiple-tables">{{ translate('multiple_tables') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/alt-pagination">{{ $t('alt_pagination') }}</router-link>
+                                    <router-link to="/datatables/alt-pagination">{{ translate('alt_pagination') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/checkbox">{{ $t('checkbox') }}</router-link>
+                                    <router-link to="/datatables/checkbox">{{ translate('checkbox') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/range-search">{{ $t('range_search') }}</router-link>
+                                    <router-link to="/datatables/range-search">{{ translate('range_search') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/export">{{ $t('export') }}</router-link>
+                                    <router-link to="/datatables/export">{{ translate('export') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/sticky-header">{{ $t('sticky_header') }}</router-link>
+                                    <router-link to="/datatables/sticky-header">{{ translate('sticky_header') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/clone-header">{{ $t('clone_header') }}</router-link>
+                                    <router-link to="/datatables/clone-header">{{ translate('clone_header') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/datatables/column-chooser">{{ $t('column_chooser') }}</router-link>
+                                    <router-link to="/datatables/column-chooser">{{ translate('column_chooser') }}</router-link>
                                 </li>
                             </ul>
                         </li>
@@ -631,7 +631,7 @@
                     <a href="javascript:;" class="nav-link">
                         <div class="flex items-center">
                             <icon-menu-forms class="shrink-0" />
-                            <span class="px-2">{{ $t('forms') }}</span>
+                            <span class="px-2">{{ translate('forms') }}</span>
                         </div>
                         <div class="right_arrow">
                             <icon-caret-down />
@@ -639,49 +639,49 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/forms/basic">{{ $t('basic') }}</router-link>
+                            <router-link to="/forms/basic">{{ translate('basic') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/input-group">{{ $t('input_group') }}</router-link>
+                            <router-link to="/forms/input-group">{{ translate('input_group') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/layouts">{{ $t('layouts') }}</router-link>
+                            <router-link to="/forms/layouts">{{ translate('layouts') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/validation">{{ $t('validation') }}</router-link>
+                            <router-link to="/forms/validation">{{ translate('validation') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/input-mask">{{ $t('input_mask') }}</router-link>
+                            <router-link to="/forms/input-mask">{{ translate('input_mask') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/select2">{{ $t('select2') }}</router-link>
+                            <router-link to="/forms/select2">{{ translate('select2') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/touchspin">{{ $t('touchspin') }}</router-link>
+                            <router-link to="/forms/touchspin">{{ translate('touchspin') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/checkbox-radio">{{ $t('checkbox_and_radio') }}</router-link>
+                            <router-link to="/forms/checkbox-radio">{{ translate('checkbox_and_radio') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/switches">{{ $t('switches') }}</router-link>
+                            <router-link to="/forms/switches">{{ translate('switches') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/wizards">{{ $t('wizards') }}</router-link>
+                            <router-link to="/forms/wizards">{{ translate('wizards') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/file-upload">{{ $t('file_upload') }}</router-link>
+                            <router-link to="/forms/file-upload">{{ translate('file_upload') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/quill-editor">{{ $t('quill_editor') }}</router-link>
+                            <router-link to="/forms/quill-editor">{{ translate('quill_editor') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/markdown-editor">{{ $t('markdown_editor') }}</router-link>
+                            <router-link to="/forms/markdown-editor">{{ translate('markdown_editor') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/date-picker">{{ $t('date_and_range_picker') }}</router-link>
+                            <router-link to="/forms/date-picker">{{ translate('date_and_range_picker') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/forms/clipboard">{{ $t('clipboard') }}</router-link>
+                            <router-link to="/forms/clipboard">{{ translate('clipboard') }}</router-link>
                         </li>
                     </ul>
                 </li>
@@ -689,7 +689,7 @@
                     <a href="javascript:;" class="nav-link">
                         <div class="flex items-center">
                             <icon-menu-pages class="shrink-0" />
-                            <span class="px-2">{{ $t('pages') }}</span>
+                            <span class="px-2">{{ translate('pages') }}</span>
                         </div>
                         <div class="right_arrow">
                             <icon-caret-down />
@@ -698,7 +698,7 @@
                     <ul class="sub-menu">
                         <li class="relative">
                             <a href="javascript:;"
-                                >{{ $t('users') }}
+                                >{{ translate('users') }}
                                 <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
                                     <icon-caret-down />
                                 </div>
@@ -707,37 +707,37 @@
                                 class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
                             >
                                 <li>
-                                    <router-link to="/users/profile">{{ $t('profile') }}</router-link>
+                                    <router-link to="/users/profile">{{ translate('profile') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/users/user-account-settings">{{ $t('account_settings') }}</router-link>
+                                    <router-link to="/users/user-account-settings">{{ translate('account_settings') }}</router-link>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <router-link to="/pages/knowledge-base">{{ $t('knowledge_base') }}</router-link>
+                            <router-link to="/pages/knowledge-base">{{ translate('knowledge_base') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/pages/contact-us-boxed" target="_blank">{{ $t('contact_us_boxed') }}</router-link>
+                            <router-link to="/pages/contact-us-boxed" target="_blank">{{ translate('contact_us_boxed') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/pages/contact-us-cover" target="_blank">{{ $t('contact_us_cover') }}</router-link>
+                            <router-link to="/pages/contact-us-cover" target="_blank">{{ translate('contact_us_cover') }}</router-link>
                         </li>
                         <li>
                             <router-link to="/pages/faq">FAQ</router-link>
                         </li>
                         <li>
-                            <router-link to="/pages/coming-soon-boxed" target="_blank">{{ $t('coming_soon_boxed') }}</router-link>
+                            <router-link to="/pages/coming-soon-boxed" target="_blank">{{ translate('coming_soon_boxed') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/pages/coming-soon-cover" target="_blank">{{ $t('coming_soon_cover') }}</router-link>
+                            <router-link to="/pages/coming-soon-cover" target="_blank">{{ translate('coming_soon_cover') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/pages/maintenence" target="_blank">{{ $t('maintenence') }}</router-link>
+                            <router-link to="/pages/maintenence" target="_blank">{{ translate('maintenence') }}</router-link>
                         </li>
                         <li class="relative">
                             <a href="javascript:;"
-                                >{{ $t('error') }}
+                                >{{ translate('error') }}
                                 <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
                                     <icon-caret-down />
                                 </div>
@@ -746,19 +746,19 @@
                                 class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
                             >
                                 <li>
-                                    <router-link to="/pages/error404" target="_blank">{{ $t('404') }}</router-link>
+                                    <router-link to="/pages/error404" target="_blank">{{ translate('404') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/pages/error500" target="_blank">{{ $t('500') }}</router-link>
+                                    <router-link to="/pages/error500" target="_blank">{{ translate('500') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/pages/error503" target="_blank">{{ $t('503') }}</router-link>
+                                    <router-link to="/pages/error503" target="_blank">{{ translate('503') }}</router-link>
                                 </li>
                             </ul>
                         </li>
                         <li class="relative">
                             <a href="javascript:;"
-                                >{{ $t('login') }}
+                                >{{ translate('login') }}
                                 <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
                                     <icon-caret-down />
                                 </div>
@@ -767,16 +767,16 @@
                                 class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
                             >
                                 <li>
-                                    <router-link to="/auth/cover-login" target="_blank">{{ $t('login_cover') }}</router-link>
+                                    <router-link to="/auth/cover-login" target="_blank">{{ translate('login_cover') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/auth/boxed-signin" target="_blank">{{ $t('login_boxed') }}</router-link>
+                                    <router-link to="/auth/boxed-signin" target="_blank">{{ translate('login_boxed') }}</router-link>
                                 </li>
                             </ul>
                         </li>
                         <li class="relative">
                             <a href="javascript:;"
-                                >{{ $t('register') }}
+                                >{{ translate('register') }}
                                 <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
                                     <icon-caret-down />
                                 </div>
@@ -785,16 +785,16 @@
                                 class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
                             >
                                 <li>
-                                    <router-link to="/auth/cover-register" target="_blank">{{ $t('register_cover') }}</router-link>
+                                    <router-link to="/auth/cover-register" target="_blank">{{ translate('register_cover') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/auth/boxed-signup" target="_blank">{{ $t('register_boxed') }}</router-link>
+                                    <router-link to="/auth/boxed-signup" target="_blank">{{ translate('register_boxed') }}</router-link>
                                 </li>
                             </ul>
                         </li>
                         <li class="relative">
                             <a href="javascript:;"
-                                >{{ $t('password_recovery') }}
+                                >{{ translate('password_recovery') }}
                                 <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
                                     <icon-caret-down />
                                 </div>
@@ -803,16 +803,16 @@
                                 class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
                             >
                                 <li>
-                                    <router-link to="/auth/cover-password-reset" target="_blank">{{ $t('recover_id_cover') }}</router-link>
+                                    <router-link to="/auth/cover-password-reset" target="_blank">{{ translate('recover_id_cover') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/auth/boxed-password-reset" target="_blank">{{ $t('recover_id_boxed') }}</router-link>
+                                    <router-link to="/auth/boxed-password-reset" target="_blank">{{ translate('recover_id_boxed') }}</router-link>
                                 </li>
                             </ul>
                         </li>
                         <li class="relative">
                             <a href="javascript:;"
-                                >{{ $t('lockscreen') }}
+                                >{{ translate('lockscreen') }}
                                 <div class="ltr:ml-auto rtl:mr-auto rtl:rotate-90 -rotate-90">
                                     <icon-caret-down />
                                 </div>
@@ -821,10 +821,10 @@
                                 class="rounded absolute top-0 ltr:left-[95%] rtl:right-[95%] min-w-[180px] bg-white z-[10] text-dark dark:text-white-dark dark:bg-[#1b2e4b] shadow p-0 py-2 hidden"
                             >
                                 <li>
-                                    <router-link to="/auth/cover-lockscreen" target="_blank">{{ $t('unlock_cover') }}</router-link>
+                                    <router-link to="/auth/cover-lockscreen" target="_blank">{{ translate('unlock_cover') }}</router-link>
                                 </li>
                                 <li>
-                                    <router-link to="/auth/boxed-lockscreen" target="_blank">{{ $t('unlock_boxed') }}</router-link>
+                                    <router-link to="/auth/boxed-lockscreen" target="_blank">{{ translate('unlock_boxed') }}</router-link>
                                 </li>
                             </ul>
                         </li>
@@ -835,7 +835,7 @@
                         <div class="flex items-center">
                             <icon-menu-more class="shrink-0" />
 
-                            <span class="px-2">{{ $t('more') }}</span>
+                            <span class="px-2">{{ translate('more') }}</span>
                         </div>
                         <div class="right_arrow">
                             <icon-caret-down />
@@ -843,19 +843,19 @@
                     </a>
                     <ul class="sub-menu">
                         <li>
-                            <router-link to="/dragndrop">{{ $t('drag_and_drop') }}</router-link>
+                            <router-link to="/dragndrop">{{ translate('drag_and_drop') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/charts">{{ $t('charts') }}</router-link>
+                            <router-link to="/charts">{{ translate('charts') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/font-icons">{{ $t('font_icons') }}</router-link>
+                            <router-link to="/font-icons">{{ translate('font_icons') }}</router-link>
                         </li>
                         <li>
-                            <router-link to="/widgets">{{ $t('widgets') }}</router-link>
+                            <router-link to="/widgets">{{ translate('widgets') }}</router-link>
                         </li>
                         <li>
-                            <a href="https://vristo.sbthemes.com" target="_blank">{{ $t('documentation') }}</a>
+                            <a href="https://vristo.sbthemes.com" target="_blank">{{ translate('documentation') }}</a>
                         </li>
                     </ul>
                 </li>
@@ -865,6 +865,15 @@
 </template>
 
 <script lang="ts" setup>
+
+
+    defineProps({
+            translate: {
+                type: Function,
+                required: true,
+            },
+        });
+
     import { ref, onMounted, computed, reactive, watch } from 'vue';
     import { useI18n } from 'vue-i18n';
 

@@ -58,7 +58,7 @@
 
             <div class="main-content flex flex-col min-h-screen">
                 <!--  BEGIN TOP NAVBAR  -->
-                <Header />
+                <Header :translate="translate"/>
                 <!--  END TOP NAVBAR  -->
 
                 <!--  BEGIN CONTENT AREA  -->
@@ -76,7 +76,14 @@
         </div>
     </div>
 </template>
-<script setup lang="ts">
+<script setup lang="ts">  
+    defineProps({
+        translate: {
+            type: Function,
+            required: true,
+        },
+    });
+
     import { ref, onMounted } from 'vue';
     import Sidebar from '@/Components/layout/Sidebar.vue';
     import Header from '@/Components/layout/Header.vue';
@@ -87,6 +94,7 @@
     import { useAppStore } from '@/stores/index';
     const store = useAppStore();
     const showTopButton = ref(false);
+
     onMounted(() => {
         window.onscroll = () => {
             if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
