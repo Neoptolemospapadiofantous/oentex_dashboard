@@ -329,11 +329,15 @@
                                         </router-link>
                                     </li>
                                     <li class="border-t border-white-light dark:border-white-light/10">
-                                        <router-link to="/auth/boxed-signin" class="text-danger !py-3" @click="close()">
+                                        <DropdownLink :href="route('logout')"
+                                    method="post"
+                                    as="button"
+                                    class="rounded-md text-sm text-gray-600 underline hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                                    >
                                             <icon-logout class="w-4.5 h-4.5 ltr:mr-2 rtl:ml-2 rotate-90 shrink-0" />
 
                                             Sign Out
-                                        </router-link>
+                                        </DropdownLink>
                                     </li>
                                 </ul>
                             </template>
@@ -866,7 +870,6 @@
 
     import appSetting from '@/app-setting';
 
-    import { usePage } from '@inertiajs/vue3';
     import { useAppStore } from '@/stores/index';
 
     import IconMenu from '@/Components/icon/icon-menu.vue';
@@ -895,9 +898,9 @@
     import IconMenuForms from '@/Components/icon/menu/icon-menu-forms.vue';
     import IconMenuPages from '@/Components/icon/menu/icon-menu-pages.vue';
     import IconMenuMore from '@/Components/icon/menu/icon-menu-more.vue';
-
+    import DropdownLink from '@/Components/DropdownLink.vue';
+    
     const store = useAppStore();
-    const route = usePage();
     const search = ref(false);
 
     // multi language

@@ -63,8 +63,10 @@
 
                 <!--  BEGIN CONTENT AREA  -->
                 <div class="p-6 animation">
-                    <router-view></router-view>
+                    <!-- The slot content will be injected here -->
+                    <slot />
                 </div>
+                
                 <!--  END CONTENT AREA  -->
 
                 <!-- BEGIN FOOTER -->

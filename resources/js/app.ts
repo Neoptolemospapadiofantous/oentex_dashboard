@@ -23,15 +23,14 @@ createInertiaApp({
             import.meta.glob<DefineComponent>('./Pages/**/*.vue'),
         ),
     setup({ el, App, props, plugin }) {
-        createApp({ render: () => h(App, props) })
+        const app = createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(ZiggyVue)
-            .use(pinia)  // Pinia is used here before accessing any store
             .use(i18n)
+            .use(pinia)  // Pinia is used here before accessing any store
+            .use(ZiggyVue)
             .component('PerfectScrollbar', PerfectScrollbar)
             .component('Popper', Popper)  // Fixed the extra space
             .mount(el);  
-
         appSetting.init();
     },
     progress: {

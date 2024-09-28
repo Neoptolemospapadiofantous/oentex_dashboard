@@ -43,12 +43,12 @@
                 
             </template>
         </div>
-    </div>
-    <div
-            class="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg"
-        >
+         <!-- Insert the slot content here -->
+         <div class="p-6 animation">
+            <!-- The slot content will be injected here -->
             <slot />
         </div>
+    </div>
 </template>
 <script setup lang="ts">
     import { ref, onMounted } from 'vue';
