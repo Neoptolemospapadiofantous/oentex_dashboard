@@ -53,8 +53,9 @@
 
         <div class="main-container text-black dark:text-white-dark min-h-screen" :class="[store.navbar]">
             <!--  BEGIN SIDEBAR  -->
-            <Sidebar />
+            <Sidebar :translate="translate"  />
             <!--  END SIDEBAR  -->
+              
 
             <div class="main-content flex flex-col min-h-screen">
                 <!--  BEGIN TOP NAVBAR  -->
