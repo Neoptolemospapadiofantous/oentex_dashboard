@@ -32,7 +32,10 @@
             class="collapse-icon w-8 h-8 rounded-full flex items-center hover:bg-gray-500/10 dark:hover:bg-dark-light/10 dark:text-white-light transition duration-300 rtl:rotate-180 hover:text-primary"
             @click="toggleSidebar"
           >
-            <IconCaretsDown class="m-auto rotate-90" />
+          <IconCaretsDown :rotate="store.sidebar ? 90 : 270" />
+
+
+
           </a>
         </div>
         <!-- Hide the perfect-scrollbar when collapsed -->
