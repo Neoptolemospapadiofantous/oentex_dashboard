@@ -1,0 +1,124 @@
+[
+    {
+      "title": "Dashboard",
+      "icon": "dashboard",
+      "route": "/",
+      "subMenu": [
+        { "title": "Sales", "route": "/" },
+        { "title": "Analytics", "route": "/analytics" },
+        { "title": "Finance", "route": "/finance" },
+        { "title": "Crypto", "route": "/crypto" }
+      ]
+    },
+    {
+      "title": "Apps",
+      "icon": "chat",
+      "subMenu": [
+        { "title": "Chat", "route": "/apps/chat" },
+        { "title": "Mailbox", "route": "/apps/mailbox" },
+        { "title": "Todo List", "route": "/apps/todolist" },
+        { "title": "Notes", "route": "/apps/notes" },
+        { "title": "Scrumboard", "route": "/apps/scrumboard" },
+        { "title": "Contacts", "route": "/apps/contacts" }
+      ]
+    },
+    {
+      "title": "Invoice",
+      "icon": "invoice",
+      "subMenu": [
+        { "title": "List", "route": "/apps/invoice/list" },
+        { "title": "Preview", "route": "/apps/invoice/preview" },
+        { "title": "Add", "route": "/apps/invoice/add" },
+        { "title": "Edit", "route": "/apps/invoice/edit" }
+      ]
+    },
+    {
+      "title": "Calendar",
+      "icon": "calendar",
+      "route": "/apps/calendar"
+    },
+    {
+      "title": "User Interface",
+      "icon": "components",
+      "subMenu": [
+        { "title": "Tabs", "route": "/components/tabs" },
+        { "title": "Accordions", "route": "/components/accordions" },
+        { "title": "Modals", "route": "/components/modals" }
+      ]
+    },
+    {
+      "title": "Elements",
+      "icon": "elements",
+      "subMenu": [
+        { "title": "Alerts", "route": "/elements/alerts" },
+        { "title": "Avatar", "route": "/elements/avatar" },
+        { "title": "Badges", "route": "/elements/badges" },
+        { "title": "Breadcrumbs", "route": "/elements/breadcrumbs" }
+      ]
+    },
+    {
+      "title": "Charts",
+      "icon": "charts",
+      "route": "/charts"
+    },
+    {
+      "title": "Widgets",
+      "icon": "widgets",
+      "route": "/widgets"
+    },
+    {
+      "title": "Font Icons",
+      "icon": "fontIcons",
+      "route": "/font-icons"
+    },
+    {
+      "title": "Drag and Drop",
+      "icon": "dragAndDrop",
+      "route": "/dragndrop"
+    },
+    {
+      "title": "Tables",
+      "icon": "tables",
+      "route": "/tables"
+    },
+    {
+      "title": "Forms",
+      "icon": "forms",
+      "subMenu": [
+        { "title": "Basic", "route": "/forms/basic" },
+        { "title": "Input Group", "route": "/forms/input-group" },
+        { "title": "Layouts", "route": "/forms/layouts" }
+      ]
+    },
+    {
+      "title": "Users",
+      "icon": "users",
+      "subMenu": [
+        { "title": "Profile", "route": "/users/profile" },
+        { "title": "Account Settings", "route": "/users/account-settings" }
+      ]
+    },
+    {
+      "title": "Pages",
+      "icon": "pages",
+      "subMenu": [
+        { "title": "Knowledge Base", "route": "/pages/knowledge-base" },
+        { "title": "FAQ", "route": "/pages/faq" },
+        { "title": "Error 404", "route": "/pages/error404" }
+      ]
+    },
+    {
+      "title": "Authentication",
+      "icon": "authentication",
+      "subMenu": [
+        { "title": "Login", "route": "/authentication/login" },
+        { "title": "Register", "route": "/authentication/register" }
+      ]
+    },
+    {
+      "title": "Documentation",
+      "icon": "documentation",
+      "route": "https://vristo.sbthemes.com"
+    }
+  ]
+  

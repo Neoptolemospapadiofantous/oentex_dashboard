@@ -7,6 +7,7 @@ import { createApp, DefineComponent, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
 import { PerfectScrollbar } from 'vue3-perfect-scrollbar';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import Popper from 'vue3-popper';
 import i18n from '@/i18n';
 import appSetting from '@/app-setting';
