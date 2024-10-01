@@ -1,5 +1,8 @@
 <template>
-    <div class="dark:text-white-dark text-center ltr:sm:text-left rtl:sm:text-right p-6 pt-0 mt-auto">
+    <footer class="fixed bottom-0 w-full z-40 bg-white dark:bg-gray-800">
+      <div>
         © {{ new Date().getFullYear() }}. Vristo All rights reserved.
-    </div>
-</template>
+      </div>
+    </footer>
+  </template>
+  
