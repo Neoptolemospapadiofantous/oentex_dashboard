@@ -4,7 +4,7 @@
     <nav
       :class="[ 
         'relative shadow-md z-50 transition-all duration-300', 
-        store.sidebar ? 'w-16' : 'w-64'
+        store.sidebar ? 'w-16 overflow-hidden' : 'w-64'
       ]"
       class="bg-white dark:bg-gray-800 h-full flex flex-col"
     >
@@ -34,7 +34,7 @@
       </div>
 
       <!-- Sidebar Menu with Perfect Scrollbar -->
-      <div ref="scrollbarContainer" class="flex-1 relative overflow-hidden p-4 no-scrollbar">
+      <div v-if="!store.sidebar" ref="scrollbarContainer" class="flex-1 relative overflow-hidden p-4 no-scrollbar">
         <SidebarMenu />
       </div>
     </nav>
@@ -63,16 +63,31 @@ const scrollOptions = {
 // Toggle the sidebar open and closed
 const toggleSidebar = () => {
   store.toggleSidebar();
+
+  if (store.sidebar) {
+    // Sidebar is collapsed, destroy Perfect Scrollbar
+    if (psInstance) {
+      psInstance.destroy();
+      psInstance = null;
+    }
+  } else {
+    // Sidebar is expanded, initialize Perfect Scrollbar
+    setTimeout(() => {
+      if (scrollbarContainer.value) {
+        psInstance = new PerfectScrollbar(scrollbarContainer.value, scrollOptions);
+        // Apply initial theme styles to the scrollbar
+        updateScrollbarTheme();
+      }
+    }, 300); // Wait for the transition to complete
+  }
 };
 
-// Initialize Perfect Scrollbar
+// Initialize Perfect Scrollbar on mount if sidebar is expanded
 onMounted(() => {
-  if (scrollbarContainer.value) {
+  if (!store.sidebar && scrollbarContainer.value) {
     psInstance = new PerfectScrollbar(scrollbarContainer.value, scrollOptions);
-
     // Handle scroll event manually to trigger necessary UI updates
     scrollbarContainer.value.addEventListener('ps-scroll-y', handleScrollY);
-
     // Apply initial theme styles to the scrollbar
     updateScrollbarTheme();
   }
@@ -112,7 +127,7 @@ const updateScrollbarTheme = () => {
     // Update thumb style (handle appearance)
     thumbElements.forEach((thumb) => {
       const thumbElement = thumb as HTMLElement;
-      thumbElement.style.backgroundColor = store.isDarkMode ? '#42b883' : '#3490dc'; // Example colors for light/dark
+      thumbElement.style.backgroundColor = store.isDarkMode ? '#42b883' : '#3490dc'; // Update colors based on theme
       thumbElement.style.borderRadius = '4px';
       thumbElement.style.transition = 'background-color 0.2s linear, width 0.2s ease-in-out';
     });
@@ -120,7 +135,7 @@ const updateScrollbarTheme = () => {
     // Update rail style (track appearance)
     railElements.forEach((rail) => {
       const railElement = rail as HTMLElement;
-      railElement.style.backgroundColor = store.isDarkMode ? '#2d2d2d' : '#e0e0e0'; // Example colors for rail in light/dark mode
+      railElement.style.backgroundColor = store.isDarkMode ? '#1f2937' : '#f1f5f9'; // Match light/dark theme colors
       railElement.style.transition = 'background-color 0.2s linear';
     });
   }
