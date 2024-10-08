@@ -6,7 +6,7 @@ import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, DefineComponent, h } from 'vue';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
-import { PerfectScrollbar } from 'vue3-perfect-scrollbar';
+// import { PerfectScrollbar } from 'vue3-perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 import Popper from 'vue3-popper';
 import i18n from '@/i18n';
@@ -29,10 +29,10 @@ createInertiaApp({
             .use(i18n)
             .use(pinia)  // Pinia is used here before accessing any store
             .use(ZiggyVue)
-            .component('PerfectScrollbar', PerfectScrollbar)
+            // .component('PerfectScrollbar', PerfectScrollbar)
             .component('Popper', Popper)  // Fixed the extra space
             .mount(el);  
-        appSetting.init();
+            appSetting.init();
     },
     progress: {
         color: '#4B5563',

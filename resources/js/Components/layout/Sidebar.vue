@@ -1,68 +1,140 @@
 <template>
-  <div :class="{ 'dark text-white-dark': store.semidark }">
-    <!-- Sidebar with dynamic width based on collapse state -->
+  <aside :class="store.semidark ? 'dark text-white-dark' : ''">
+    <!-- Sidebar container -->
     <nav
-      :class="[ 'fixed top-[64px] shadow-[5px_0_25px_0_rgba(94,92,154,0.1)] z-50 transition-all duration-300', store.sidebar ? 'w-[60px]' : 'w-[250px]' ]"
-      style="height: calc(100vh - 64px);"
+      :class="[ 
+        'relative shadow-md z-50 transition-all duration-300', 
+        store.sidebar ? 'w-16' : 'w-64'
+      ]"
+      class="bg-white dark:bg-gray-800 h-full flex flex-col"
     >
-      <div class="bg-white dark:bg-[#0e1726] h-full flex flex-col">
-        <!-- Logo and Collapse Button -->
-        <div class="flex justify-between items-center px-4 py-3">
-          <!-- Main Logo (only visible when sidebar is expanded) -->
-          <router-link
-            v-if="!store.sidebar"
-            to="/"
-            class="main-logo flex items-center shrink-0"
-          >
-            <img
-              class="w-8 ml-[5px] flex-none"
-              src="../assets/logo.png"
-              alt="Logo"
-            />
-            <span
-              class="text-2xl ltr:ml-1.5 rtl:mr-1.5 font-semibold align-middle lg:inline dark:text-white-light"
-            >
-              VRISTO
-            </span>
-          </router-link>
-
-          <!-- Collapse/Expand Button -->
-          <button
-            class="collapse-icon w-8 h-8 rounded-full flex items-center justify-center hover:bg-gray-500/10 dark:hover:bg-dark-light/10 dark:text-white-light transition duration-300 rtl:rotate-180 hover:text-primary"
-            @click="toggleSidebar"
-            type="button"
-          >
-            <IconCaretsDown :rotate="store.sidebar ? 90 : 270" />
-          </button>
-        </div>
-
-        <!-- Sidebar Menu with perfect-scrollbar -->
-        <perfect-scrollbar
+      <!-- Header: Logo and collapse button -->
+      <div class="flex justify-between items-center px-4 py-3">
+        <!-- Main logo (visible only when expanded) -->
+        <router-link
           v-if="!store.sidebar"
-          :options="{ swipeEasing: true, wheelPropagation: false }"
-          class="flex-1 relative overflow-hidden"
+          to="/"
+          class="flex items-center"
         >
-          <SidebarMenu />
-        </perfect-scrollbar>
+          <img class="w-8" src="../assets/logo.png" alt="Logo" />
+          <span class="text-2xl ml-2 font-semibold dark:text-white">
+            VRISTO
+          </span>
+        </router-link>
+
+        <!-- Collapse/Expand button -->
+        <button
+          class="w-8 h-8 rounded-full flex items-center justify-center 
+                 hover:bg-gray-500/10 dark:hover:bg-gray-700/10 dark:text-white 
+                 transition duration-300 hover:text-primary"
+          @click="toggleSidebar"
+        >
+          <IconCaretsDown :rotate="store.sidebar ? 90 : 270" />
+        </button>
+      </div>
+
+      <!-- Sidebar Menu with Perfect Scrollbar -->
+      <div ref="scrollbarContainer" class="flex-1 relative overflow-hidden p-4 no-scrollbar">
+        <SidebarMenu />
       </div>
     </nav>
-  </div>
+  </aside>
 </template>
 
 <script lang="ts" setup>
-defineProps({
-            translate: {
-                type: Function,
-                required: true,
-            },
-});
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useAppStore } from '@/stores/index';
 import SidebarMenu from './sidebar/SidebarMenu.vue';
 import IconCaretsDown from '@/Components/icon/icon-carets-down.vue';
+import PerfectScrollbar from 'perfect-scrollbar';
+import 'perfect-scrollbar/css/perfect-scrollbar.css';
 
 const store = useAppStore();
+const scrollbarContainer = ref<HTMLElement | null>(null);
+let psInstance: PerfectScrollbar | null = null;
 
+// Custom options for Perfect Scrollbar
+const scrollOptions = {
+  wheelSpeed: 1,
+  wheelPropagation: false,
+  suppressScrollX: true,
+};
+
+// Toggle the sidebar open and closed
 const toggleSidebar = () => {
   store.toggleSidebar();
 };
+
+// Initialize Perfect Scrollbar
+onMounted(() => {
+  if (scrollbarContainer.value) {
+    psInstance = new PerfectScrollbar(scrollbarContainer.value, scrollOptions);
+
+    // Handle scroll event manually to trigger necessary UI updates
+    scrollbarContainer.value.addEventListener('ps-scroll-y', handleScrollY);
+
+    // Apply initial theme styles to the scrollbar
+    updateScrollbarTheme();
+  }
+});
+
+// Destroy Perfect Scrollbar on unmount
+onBeforeUnmount(() => {
+  if (psInstance) {
+    psInstance.destroy();
+    psInstance = null;
+  }
+});
+
+// Watch for changes in the store theme (dark/light mode)
+watch(
+  () => store.isDarkMode,
+  () => {
+    if (psInstance) {
+      updateScrollbarTheme();
+      psInstance.update(); // Update Perfect Scrollbar after changing styles
+    }
+  }
+);
+
+// Handle the scroll event (for further customization, if needed)
+const handleScrollY = () => {
+  // Your code for handling scrolling can be added here if needed.
+};
+
+// Update Scrollbar theme dynamically based on the current theme
+const updateScrollbarTheme = () => {
+  if (scrollbarContainer.value) {
+    // Select scrollbar elements
+    const thumbElements = scrollbarContainer.value.querySelectorAll('.ps__thumb-y, .ps__thumb-x');
+    const railElements = scrollbarContainer.value.querySelectorAll('.ps__rail-y, .ps__rail-x');
+
+    // Update thumb style (handle appearance)
+    thumbElements.forEach((thumb) => {
+      const thumbElement = thumb as HTMLElement;
+      thumbElement.style.backgroundColor = store.isDarkMode ? '#42b883' : '#3490dc'; // Example colors for light/dark
+      thumbElement.style.borderRadius = '4px';
+      thumbElement.style.transition = 'background-color 0.2s linear, width 0.2s ease-in-out';
+    });
+
+    // Update rail style (track appearance)
+    railElements.forEach((rail) => {
+      const railElement = rail as HTMLElement;
+      railElement.style.backgroundColor = store.isDarkMode ? '#2d2d2d' : '#e0e0e0'; // Example colors for rail in light/dark mode
+      railElement.style.transition = 'background-color 0.2s linear';
+    });
+  }
+};
 </script>
+
+<style scoped>
+/* Hide native browser scrollbars */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;    /* Firefox */
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+</style>
