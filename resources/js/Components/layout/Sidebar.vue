@@ -17,7 +17,7 @@
           :to="homeLink"
 
         >
-          <span class="text-3xl font-semibold dark:text-white pl-1 ">
+          <span class="text-3xl font-semibold dark:text-white pl-2 ">
             {{ brandName }}
           </span>
         </router-link>

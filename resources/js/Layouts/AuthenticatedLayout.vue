@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col h-screen">
-      <Header>
+      <Header :translate="translate">
         <slot name="header"></slot>
       </Header>
       <div class="flex flex-1 overflow-hidden h-full">
@@ -19,6 +19,13 @@
 
 
 <script setup lang="ts">
+defineProps({
+          translate: {
+              type: Function,
+              required: true,
+          },
+});
+
 import Header from '@/Components/layout/Header.vue'
 import Footer from '@/Components/layout/Footer.vue'
 import Sidebar from '@/Components/layout/Sidebar.vue'
