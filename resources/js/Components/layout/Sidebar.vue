@@ -1,24 +1,24 @@
 <template>
-  <aside :class="store.semidark ? 'dark text-white-dark' : ''">
+  <aside :class="[store.semidark ? 'dark text-white-dark' : '', sidebarClasses]">
     <!-- Sidebar container -->
     <nav
       :class="[ 
-        'relative shadow-md z-50 transition-all duration-300', 
-        store.sidebar ? 'w-16 overflow-hidden' : 'w-64'
+        'relative shadow-md z-50 transition-all duration-300',
+        store.sidebar ? 'w-16 overflow-hidden' : 'w-64',
+        sidebarBackgroundClass
       ]"
-      class="bg-white dark:bg-gray-800 h-full flex flex-col"
+      class="h-full flex flex-col"
     >
-      <!-- Header: Logo and collapse button -->
-      <div class="flex justify-between items-center px-4 py-3">
-        <!-- Main logo (visible only when expanded) -->
+      <!-- Header: Title and Collapse button, aligned -->
+      <div class="flex items-center justify-between px-7 py- w-full box-border">
+        <!-- Title (aligned with the button) -->
         <router-link
           v-if="!store.sidebar"
-          to="/"
-          class="flex items-center"
+          :to="homeLink"
+
         >
-          <img class="w-8" src="../assets/logo.png" alt="Logo" />
-          <span class="text-2xl ml-2 font-semibold dark:text-white">
-            VRISTO
+          <span class="text-3xl font-semibold dark:text-white pl-1 ">
+            {{ brandName }}
           </span>
         </router-link>
 
@@ -34,20 +34,41 @@
       </div>
 
       <!-- Sidebar Menu with Perfect Scrollbar -->
-      <div v-if="!store.sidebar" ref="scrollbarContainer" class="flex-1 relative overflow-hidden p-4 no-scrollbar">
+      <div v-if="!store.sidebar" ref="scrollbarContainer" class="flex-1 relative overflow-hidden px-4 pt-4 pb-4 w-full box-border">
         <SidebarMenu />
       </div>
     </nav>
   </aside>
 </template>
 
+
+
 <script lang="ts" setup>
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
+import { ref, onMounted, onBeforeUnmount, watch, defineProps } from 'vue';
 import { useAppStore } from '@/stores/index';
 import SidebarMenu from './sidebar/SidebarMenu.vue';
 import IconCaretsDown from '@/Components/icon/icon-carets-down.vue';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
+
+const props = defineProps({
+  brandName: {
+    type: String,
+    default: 'OENTEX',
+  },
+  homeLink: {
+    type: String,
+    default: '/',
+  },
+  sidebarClasses: {
+    type: String,
+    default: '',
+  },
+  sidebarBackgroundClass: {
+    type: String,
+    default: 'bg-white dark:bg-gray-800',
+  },
+});
 
 const store = useAppStore();
 const scrollbarContainer = ref<HTMLElement | null>(null);
@@ -141,15 +162,3 @@ const updateScrollbarTheme = () => {
   }
 };
 </script>
-
-<style scoped>
-/* Hide native browser scrollbars */
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none;    /* Firefox */
-}
-
-.no-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
-}
-</style>
