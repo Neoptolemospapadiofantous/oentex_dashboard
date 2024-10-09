@@ -10,7 +10,7 @@
       class="h-full flex flex-col"
     >
       <!-- Header: Title and Collapse button, aligned -->
-      <div class="flex items-center justify-between px-7 py- w-full box-border">
+      <div class="flex items-center justify-between px-7 py-7 w-full box-border">
         <!-- Title (aligned with the button) -->
         <router-link
           v-if="!store.sidebar"
