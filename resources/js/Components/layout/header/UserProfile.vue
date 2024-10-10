@@ -19,11 +19,11 @@
           <li class="flex items-center px-4 py-4">
             <icon-user class="relative w-8 h-8 rounded-full" alt="User Icon" />
             <div class="ltr:pl-4 rtl:pr-4 truncate">
-              <h4 class="text-base">John Doe
+              <h4 class="text-base">{{user.name}}
                 <span class="text-xs bg-success-light text-success rounded px-1 ltr:ml-2 rtl:ml-2">Pro</span>
               </h4>
               <a class="text-dark hover:text-primary dark:text-white-light dark:hover:text-primary">
-                johndoe@gmail.com
+                {{user.email}}
               </a>
             </div>
           </li>
@@ -60,6 +60,8 @@ import IconUser from '@/Components/icon/icon-user.vue';
 import IconMailDot from '@/Components/icon/icon-mail-dot.vue';
 import IconLockDots from '@/Components/icon/icon-lock-dots.vue';
 import IconLogout from '@/Components/icon/icon-logout.vue';
+import { usePage } from '@inertiajs/vue3';
+const { user } = usePage().props.auth;
 
 const store = useAppStore();
 </script>

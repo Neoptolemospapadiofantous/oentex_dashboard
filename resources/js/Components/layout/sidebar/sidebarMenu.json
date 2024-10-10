@@ -7,7 +7,8 @@
         { "title": "Sales", "route": "/" },
         { "title": "Analytics", "route": "/analytics" },
         { "title": "Finance", "route": "/finance" },
-        { "title": "Crypto", "route": "/crypto" }
+        { "title": "Crypto", "route": "/crypto" },
+        { "title": "Analytics", "route": "/analytics" }
       ]
     },
     {

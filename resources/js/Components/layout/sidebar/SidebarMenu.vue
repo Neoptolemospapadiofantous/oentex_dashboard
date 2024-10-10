@@ -14,9 +14,9 @@
         <VueCollapsible :isOpen="activeDropdowns[menu.title]">
           <ul class="sub-menu text-sm text-gray-500 pl-4 space-y-1">
             <li v-for="(subMenuItem, subIndex) in menu.subMenu" :key="subIndex">
-              <router-link :to="subMenuItem.route" class="block py-1 hover:text-primary transition">
+              <Link :href="subMenuItem.route" class="block py-1 hover:text-primary transition">
                 {{ subMenuItem.title }}
-              </router-link>
+              </Link>
             </li>
           </ul>
         </VueCollapsible>
@@ -29,6 +29,7 @@
 import SidebarMenuItem from './SidebarMenuItem.vue';
 import VueCollapsible from 'vue-height-collapsible/vue3';
 import { ref, onMounted } from 'vue';
+import { Link } from '@inertiajs/vue3';
 
 // Import all icons
 import IconMenuDashboard from '@/Components/icon/menu/icon-menu-dashboard.vue';

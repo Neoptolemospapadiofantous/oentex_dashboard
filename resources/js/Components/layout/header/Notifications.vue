@@ -51,7 +51,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, defineProps } from 'vue';
+import { ref,  } from 'vue';
 import IconBellBing from '@/Components/icon/icon-bell-bing.vue';
 import IconMailDot from '@/Components/icon/icon-mail-dot.vue';
 import IconXCircle from '@/Components/icon/icon-x-circle.vue';
