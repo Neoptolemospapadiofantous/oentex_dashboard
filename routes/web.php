@@ -27,10 +27,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     })->name('analytics');
 
     // API-like routes to get analytics data
-    Route::post('/analytics/interactions', [VoiceflowAnalyticsController::class, 'getInteractions'])
-        ->name('analytics.interactions');
-    Route::post('/analytics/sessions', [VoiceflowAnalyticsController::class, 'getSessions'])
-        ->name('analytics.sessions');
+    Route::post('/analytics/data', [VoiceflowAnalyticsController::class, 'getAnalyticsData'])
+    ->name('analytics.data');
 });
 
 
