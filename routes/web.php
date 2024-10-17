@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\VoiceflowAnalyticsController;
+use App\Http\Controllers\VoiceflowDocumentController;
 
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +30,14 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // API-like routes to get analytics data
     Route::post('/analytics/data', [VoiceflowAnalyticsController::class, 'getAnalyticsData'])
     ->name('analytics.data');
+
+
+    Route::get('/documents', function () {
+        return Inertia::render('Voiceflow/Documents');
+    })->name('documents');
+    
+    Route::post('/documents/list', [VoiceflowDocumentController::class, 'getDocuments']);
+    Route::post('/documents/upload', [VoiceflowDocumentController::class, 'uploadDocument']);
 });
 
 
