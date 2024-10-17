@@ -1,0 +1,55 @@
+{
+    "quickLinks": [
+      {
+        "route": "/apps/calendar",
+        "icon": "IconCalendar"
+      },
+      {
+        "route": "/apps/todolist",
+        "icon": "IconEdit"
+      },
+      {
+        "route": "/apps/chat",
+        "icon": "IconChatNotification"
+      }
+    ],
+    "menuLinks": [
+      {
+        "title": "Dashboard",
+        "icon": "IconMenuDashboard",
+        "subMenu": [
+          {
+            "title": "Sales",
+            "route": "/"
+          },
+          {
+            "title": "Analytics",
+            "route": "/analytics"
+          },
+          {
+            "title": "Finance",
+            "route": "/finance"
+          },
+          {
+            "title": "Crypto",
+            "route": "/crypto"
+          }
+        ]
+      },
+      {
+        "title": "Apps",
+        "icon": "IconMenuApps",
+        "subMenu": [
+          {
+            "title": "Chat",
+            "route": "/apps/chat"
+          },
+          {
+            "title": "Mailbox",
+            "route": "/apps/mailbox"
+          }
+        ]
+      }
+    ]
+  }
+  

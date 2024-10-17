@@ -8,6 +8,8 @@
     "devDependencies": {
         "@inertiajs/vue3": "^1.0.0",
         "@tailwindcss/forms": "^0.5.3",
+        "@tailwindcss/typography": "^0.5.15",
+        "@types/chart.js": "^2.9.41",
         "@vitejs/plugin-vue": "^5.0.0",
         "autoprefixer": "^10.4.12",
         "axios": "^1.7.4",
@@ -21,7 +23,9 @@
     },
     "dependencies": {
         "@intlify/unplugin-vue-i18n": "^5.2.0",
+        "chart.js": "^3.9.1",
         "pinia": "^2.2.2",
+        "vue-chart-3": "^3.1.8",
         "vue-height-collapsible": "^0.1.1",
         "vue-i18n": "^10.0.0",
         "vue3-perfect-scrollbar": "^2.0.0",
