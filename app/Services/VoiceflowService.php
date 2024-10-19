@@ -65,14 +65,7 @@ class VoiceflowService
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (RequestException $e) {
-            // Log specific error message if the response is available
-            if ($e->hasResponse()) {
-                $errorResponse = json_decode($e->getResponse()->getBody()->getContents(), true);
-                Log::error('Error fetching analytics data: ' . $errorResponse['message'] ?? $e->getMessage());
-                return ['error' => $errorResponse['message'] ?? 'Failed to retrieve data'];
-            }
-            // General error logging for other exceptions
-            Log::error('Error fetching analytics data: ' . $e->getMessage());
+            $this->handleRequestException($e, 'fetching analytics data');
             return ['error' => 'Failed to retrieve data'];
         }
     }
@@ -105,14 +98,7 @@ class VoiceflowService
 
             return json_decode($response->getBody()->getContents(), true);
         } catch (RequestException $e) {
-            // Log specific error message if the response is available
-            if ($e->hasResponse()) {
-                $errorResponse = json_decode($e->getResponse()->getBody()->getContents(), true);
-                Log::error('Error fetching documents: ' . $errorResponse['message'] ?? $e->getMessage());
-                return ['error' => $errorResponse['message'] ?? 'Failed to retrieve documents'];
-            }
-            // General error logging for other exceptions
-            Log::error('Error fetching documents: ' . $e->getMessage());
+            $this->handleRequestException($e, 'fetching documents');
             return ['error' => 'Failed to retrieve documents'];
         }
     }
@@ -159,15 +145,159 @@ class VoiceflowService
             // Decode and return the response
             return json_decode($response->getBody()->getContents(), true);
         } catch (RequestException $e) {
-            // Log specific error message if the response is available
-            if ($e->hasResponse()) {
-                $errorResponse = json_decode($e->getResponse()->getBody()->getContents(), true);
-                Log::error('Error uploading document: ' . $errorResponse['message'] ?? $e->getMessage());
-                return ['error' => $errorResponse['message'] ?? 'Failed to upload document'];
-            }
-            // General error logging for other exceptions
-            Log::error('Error uploading document: ' . $e->getMessage());
+            $this->handleRequestException($e, 'uploading document');
             return ['error' => 'Failed to upload document'];
+        }
+    }
+
+    /**
+     * Upload a document from a URL to Voiceflow.
+     */
+    public function uploadDocumentFromUrl($url, $overwrite = false)
+    {
+        try {
+            $response = $this->client->post('knowledge-base/docs/upload-url', [
+                'json' => [
+                    'url' => $url,
+                    'overwrite' => $overwrite ? 'True' : 'False',
+                ],
+                'headers' => [
+                    'Authorization' => $this->token,
+                    'Accept' => 'application/json',
+                ]
+            ]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $this->handleRequestException($e, 'uploading document from URL');
+            return ['error' => 'Failed to upload document from URL'];
+        }
+    }
+
+    /**
+     * Upload table data to Voiceflow.
+     */
+    public function uploadTableData($tableData, $overwrite = false)
+    {
+        try {
+            $response = $this->client->post('knowledge-base/docs/upload-table', [
+                'json' => [
+                    'tableData' => $tableData,
+                    'overwrite' => $overwrite ? 'True' : 'False',
+                ],
+                'headers' => [
+                    'Authorization' => $this->token,
+                    'Accept' => 'application/json',
+                ]
+            ]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $this->handleRequestException($e, 'uploading table data');
+            return ['error' => 'Failed to upload table data'];
+        }
+    }
+
+    /**
+     * Delete a document from Voiceflow.
+     */
+    public function deleteDocument($documentID)
+    {
+        try {
+            $response = $this->client->delete("knowledge-base/docs/{$documentID}", [
+                'headers' => [
+                    'Authorization' => $this->token,
+                    'Accept' => 'application/json',
+                ]
+            ]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $this->handleRequestException($e, 'deleting document');
+            return ['error' => 'Failed to delete document'];
+        }
+    }
+
+    /**
+     * Retrieve document chunk.
+     */
+    public function getDocumentChunk($documentID)
+    {
+        try {
+            // Make the GET request to the Voiceflow API
+            $response = $this->client->get("https://api.voiceflow.com/v1/knowledge-base/docs/{$documentID}", [
+                'headers' => [
+                    'Authorization' => $this->token,
+                    'Accept' => 'application/json',
+                ]
+            ]);
+    
+            // Decode and return the response
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            // Handle any request exceptions here
+            Log::error('Request error: ' . $e->getMessage());
+            throw $e; // Rethrow to handle in controller
+        }
+    }
+    /**
+     * Replace a document (non-URL).
+     */
+    public function replaceDocument($documentID, $file)
+    {
+        try {
+            $response = $this->client->put("knowledge-base/docs/{$documentID}", [
+                'headers' => [
+                    'Authorization' => $this->token,
+                    'Accept' => 'application/json',
+                ],
+                'multipart' => [
+                    [
+                        'name' => 'file',
+                        'contents' => fopen($file->getRealPath(), 'r'),
+                        'filename' => $file->getClientOriginalName(),
+                    ],
+                ]
+            ]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $this->handleRequestException($e, 'replacing document');
+            return ['error' => 'Failed to replace document'];
+        }
+    }
+
+    /**
+     * Replace a document (URL).
+     */
+    public function replaceDocumentWithUrl($documentID, $url)
+    {
+        try {
+            $response = $this->client->put("knowledge-base/docs/{$documentID}", [
+                'json' => ['url' => $url],
+                'headers' => [
+                    'Authorization' => $this->token,
+                    'Accept' => 'application/json',
+                ]
+            ]);
+
+            return json_decode($response->getBody()->getContents(), true);
+        } catch (RequestException $e) {
+            $this->handleRequestException($e, 'replacing document with URL');
+            return ['error' => 'Failed to replace document with URL'];
+        }
+    }
+
+    /**
+     * Handle request exceptions and log errors.
+     */
+    protected function handleRequestException(RequestException $e, $action)
+    {
+        if ($e->hasResponse()) {
+            $errorResponse = json_decode($e->getResponse()->getBody()->getContents(), true);
+            Log::error("Error {$action}: " . ($errorResponse['message'] ?? $e->getMessage()));
+        } else {
+            Log::error("Error {$action}: " . $e->getMessage());
         }
     }
 }
