@@ -1,90 +1,97 @@
 <template>
-  <Head title="VoiceflowAnalytics" />
+  <Head title="Voiceflow Analytics" />
 
   <AuthenticatedLayout :translate="translate">
     <template #header>
-      <h2 class="text-xl font-semibold leading-tight text-gray-800 text-center">
-        Analytics Dashboard
-      </h2>
+      <div class="px-8 py-4 bg-gradient-to-r from-blue-500 to-purple-600">
+        <h2 class="text-2xl font-bold text-white text-center">
+          Voiceflow Analytics Dashboard
+        </h2>
+      </div>
     </template>
 
     <template #main>
-      <div class="container mx-auto p-6 space-y-6">
-        <h1 class="text-3xl font-bold mb-6 text-center">Analytics Dashboard</h1>
+      <div class="py-10">
+        <div class="max-w-5xl mx-auto px-4">
 
-        <!-- Form to enter API Key and Project ID -->
-        <div class="grid gap-4 mb-6 md:grid-cols-2">
-          <div>
-            <label class="block text-gray-700">Voiceflow API Key:</label>
-            <input
-              type="text"
-              v-model="apiKeyInput"
-              class="border p-2 rounded-lg w-full"
-              placeholder="Enter your Voiceflow API Key"
+          <!-- Form for Date Range -->
+          <form @submit.prevent="fetchAnalyticsData" class="bg-white p-6 mb-8 shadow-md rounded-md grid gap-4 md:grid-cols-2">
+            <div>
+              <label class="block text-sm font-medium text-gray-700">Start Time:</label>
+              <input
+                type="datetime-local"
+                v-model="startTimeInput"
+                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700">End Time:</label>
+              <input
+                type="datetime-local"
+                v-model="endTimeInput"
+                class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+              />
+            </div>
+            <div class="md:col-span-2">
+              <button
+                type="submit"
+                class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 rounded-md transition"
+              >
+                Fetch Analytics Data
+              </button>
+            </div>
+          </form>
+
+          <!-- Loading indicator -->
+          <div v-if="isLoading" class="flex justify-center mt-4">
+            <span class="animate-spin rounded-full h-12 w-12 border-t-2 border-blue-500"></span>
+          </div>
+
+          <!-- Error message -->
+          <div v-if="globalError" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative mb-4 shadow-md transition" role="alert">
+            <strong class="font-bold">Error:</strong>
+            <span class="block sm:inline">{{ globalError }}</span>
+          </div>
+
+          <!-- Full-Width Analytics Components for Each Agent -->
+          <div v-for="agent in agents" :key="agent.id" class="w-full my-8 bg-white p-6 rounded-md shadow-md">
+            <AgentAnalyticsComponent
+              :agent="agent"
+              :interactions="agent.interactions"
+              :sessions="agent.sessions"
+              :topIntents="agent.topIntents"
+              :topSlots="agent.topSlots"
+              :understoodMessages="agent.understoodMessages"
+              :uniqueUsers="agent.uniqueUsers"
+              :tokensConsumed="agent.tokensConsumed"
+              :error="agent.error"
             />
           </div>
-          <div>
-            <label class="block text-gray-700">Voiceflow Project ID:</label>
-            <input
-              type="text"
-              v-model="projectIdInput"
-              class="border p-2 rounded-lg w-full"
-              placeholder="Enter your Voiceflow Project ID"
+
+          <!-- Full-Width Chart Analytics Component -->
+          <div class="my-8">
+            <ChartAnalyticsComponent
+              v-for="agent in agents" 
+              :key="agent.id"
+              :interactions="agent.interactions"
+              :sessions="agent.sessions"
+              :topIntents="agent.topIntents"
+              :topSlots="agent.topSlots"
+              :understoodMessages="agent.understoodMessages"
+              :uniqueUsers="agent.uniqueUsers"
+              :tokensConsumed="agent.tokensConsumed"
             />
           </div>
-        </div>
-
-        <!-- Form to select startTime and endTime -->
-        <div class="grid gap-4 mb-6 md:grid-cols-2">
-          <div>
-            <label class="block text-gray-700">Start Time:</label>
-            <input
-              type="datetime-local"
-              v-model="startTimeInput"
-              class="border p-2 rounded-lg w-full"
-            />
-          </div>
-          <div>
-            <label class="block text-gray-700">End Time:</label>
-            <input
-              type="datetime-local"
-              v-model="endTimeInput"
-              class="border p-2 rounded-lg w-full"
-            />
-          </div>
-        </div>
-
-        <!-- Button to fetch data -->
-        <div class="flex justify-center">
-          <button
-            @click="fetchAnalyticsData"
-            class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded-lg"
-          >
-            Fetch Analytics Data
-          </button>
-        </div>
-
-        <!-- Table and Chart for Each Agent -->
-        <div v-for="agent in agents" :key="agent.id" class="my-8">
-          <AgentAnalyticsComponent
-            :agent="agent"
-            :interactions="agent.interactions"
-            :sessions="agent.sessions"
-            :topIntents="agent.topIntents"
-            :topSlots="agent.topSlots"
-            :understoodMessages="agent.understoodMessages"
-            :uniqueUsers="agent.uniqueUsers"
-            :tokensConsumed="agent.tokensConsumed"
-            :error="agent.error"
-          />
         </div>
       </div>
     </template>
 
     <template #footer>
-      <p class="text-center text-gray-500 text-sm">
-        &copy; 2024 Vristo. All rights reserved.
-      </p>
+      <footer class="bg-gray-800 text-white py-4 mt-4">
+        <div class="container mx-auto text-center">
+          <p>&copy; 2024 Vristo. All rights reserved.</p>
+        </div>
+      </footer>
     </template>
   </AuthenticatedLayout>
 </template>
@@ -95,21 +102,19 @@ import { Head } from '@inertiajs/vue3';
 import { ref } from 'vue';
 import axios from 'axios';
 import AgentAnalyticsComponent from '@/Components/analytics/AgentAnalyticsComponent.vue';
+import ChartAnalyticsComponent from '@/Components/analytics/ChartComponent.vue';
 
-// State variables for input fields
-const apiKeyInput = ref<string>('VF.DM.66f2a65d8d9312ecde1d7264.G7z7QOHV97maEKi1'); // Default API Key
-const projectIdInput = ref<string>('66e5a810791dba93cee4e8b7'); // Default Project ID
-const startTimeInput = ref<string | null>(new Date().toISOString().slice(0, 16)); // Default to current date
-const endTimeInput = ref<string | null>(new Date().toISOString().slice(0, 16)); // Default to current date
+const startTimeInput = ref<string | null>(new Date().toISOString().slice(0, 16));
+const endTimeInput = ref<string | null>(new Date().toISOString().slice(0, 16));
 
-// Mock agents array for demonstration
+const isLoading = ref(false);
+const globalError = ref<string | null>(null);
+
 const agents = ref([
   {
     id: 1,
     name: "Agent 1",
-    projectID: "",
-    apiKey: "",
-    interactions: 0,
+    interactions: 0, 
     sessions: 0,
     topIntents: 0,
     topSlots: 0,
@@ -118,48 +123,45 @@ const agents = ref([
     tokensConsumed: 0,
     error: null
   },
-  // Add more agents as needed
 ]);
 
-// Function to fetch analytics data for all metrics per agent
 const fetchAnalyticsData = async () => {
+  isLoading.value = true;
+  globalError.value = null;
+
   const metrics = ['interactions', 'sessions', 'intents', 'slots', 'messages', 'users', 'tokens'];
-
-  // Validate the API key and project ID
-  if (!apiKeyInput.value || !projectIdInput.value) {
-    alert("Please enter a valid API key and Project ID.");
-    return;
-  }
-
-  for (const agent of agents.value) {
-    agent.apiKey = apiKeyInput.value; // Set API key
-    agent.projectID = projectIdInput.value; // Set Project ID
-
-    for (const metric of metrics) {
-      try {
+  
+  try {
+    for (const agent of agents.value) {
+      for (const metric of metrics) {
         const response = await axios.post('/analytics/data', {
-          projectID: agent.projectID,
-          apiKey: agent.apiKey,
           startTime: new Date(startTimeInput.value).toISOString(),
           endTime: new Date(endTimeInput.value).toISOString(),
           name: metric,
         });
 
-        // Assign the result to the corresponding metric
         if (response.data.result && response.data.result.length > 0) {
           agent[metric] = response.data.result[0].count;
         }
         agent.error = null;
-      } catch (err) {
-        agent.error = `Failed to fetch ${metric} for ${agent.name}`;
-        console.error(`Error fetching ${metric} for ${agent.name}:`, err.message);
       }
     }
+  } catch (err) {
+    globalError.value = 'Failed to fetch analytics data. Please try again.';
+    console.error('Error fetching data:', err.message);
+  } finally {
+    isLoading.value = false;
   }
 };
 </script>
 
-
 <style scoped>
-/* Add any specific styling here */
+/* Scoped style for animations and specific customizations as needed */
+.modal-scale-fade-enter-active, .modal-scale-fade-leave-active {
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.modal-scale-fade-enter, .modal-scale-fade-leave-to {
+  opacity: 0;
+  transform: scale(0.95);
+}
 </style>

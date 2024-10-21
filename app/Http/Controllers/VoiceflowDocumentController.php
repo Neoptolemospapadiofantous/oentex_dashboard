@@ -126,7 +126,6 @@ class VoiceflowDocumentController extends Controller
         try {
             $file = $request->file('file');
             $replaceResponse = $this->voiceflowService->replaceDocument($documentID, $file);
-
             if (isset($replaceResponse['error'])) {
                 Log::error('Replace document error: ' . $replaceResponse['error']);
                 return response()->json(['error' => 'Failed to replace document: ' . $replaceResponse['error']], 500);

@@ -21,14 +21,10 @@ class VoiceflowAnalyticsController extends Controller
             'name' => 'required|string',
             'startTime' => 'required|date',
             'endTime' => 'required|date',
-            'projectID' => 'required|string',
-            'apiKey' => 'required|string',
         ]);
 
         try {
             $data = $this->voiceflowService->getAnalyticsData(
-                $request->input('projectID'),
-                $request->input('apiKey'),
                 $request->input('startTime'),
                 $request->input('endTime'),
                 $request->input('name')

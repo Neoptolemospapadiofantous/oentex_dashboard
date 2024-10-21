@@ -10,7 +10,8 @@ class VoiceflowService
 {
     protected $client;
     protected $token;
-
+    protected $projectID;
+    
     public function __construct()
     {
         // Initialize the Guzzle HTTP client with the Voiceflow API base URI for documents
@@ -20,6 +21,7 @@ class VoiceflowService
         
         // Set the authorization token from the environment variable
         $this->token = env('VOICEFLOW_API_TOKEN');
+        $this->projectID = env('VOICEFLOW_PROJECT_ID');
 
         // Ensure the token is set
         if (empty($this->token)) {
@@ -37,7 +39,7 @@ class VoiceflowService
      * @param string $name
      * @return array
      */
-    public function getAnalyticsData($projectID, $startTime, $endTime, $name)
+    public function getAnalyticsData($startTime, $endTime, $name)
     {
         try {
             // Prepare the query for analytics data
@@ -46,7 +48,7 @@ class VoiceflowService
                     [
                         'name' => $name,
                         'filter' => [
-                            'projectID' => $projectID,
+                            'projectID' => $this->projectID,
                             'startTime' => $startTime,
                             'endTime' => $endTime,
                         ],
@@ -62,7 +64,6 @@ class VoiceflowService
                 ],
                 'json' => $query,
             ]);
-
             return json_decode($response->getBody()->getContents(), true);
         } catch (RequestException $e) {
             $this->handleRequestException($e, 'fetching analytics data');
@@ -246,7 +247,8 @@ class VoiceflowService
     public function replaceDocument($documentID, $file)
     {
         try {
-            $response = $this->client->put("knowledge-base/docs/{$documentID}", [
+            // dd($file,$documentID);
+            $response = $this->client->put("knowledge-base/docs/{$documentID}/upload", [
                 'headers' => [
                     'Authorization' => $this->token,
                     'Accept' => 'application/json',
