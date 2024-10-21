@@ -34,23 +34,11 @@
       </div>
     </div>
 
-    <!-- ChartComponent -->
-    <ChartComponent
-      :interactions="interactions"
-      :sessions="sessions"
-      :topIntents="topIntents"
-      :topSlots="topSlots"
-      :understoodMessages="understoodMessages"
-      :uniqueUsers="uniqueUsers"
-      :tokensConsumed="tokensConsumed"
-    />
-
     <InputError :message="error" />
   </div>
 </template>
 
 <script setup lang="ts">
-import ChartComponent from './ChartComponent.vue';
 import InputError from '@/Components/InputError.vue';
 
 const props = defineProps<{

@@ -29,17 +29,25 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     // API-like routes to get analytics data
     Route::post('/analytics/data', [VoiceflowAnalyticsController::class, 'getAnalyticsData'])
-    ->name('analytics.data');
-
+        ->name('analytics.data');
 
     Route::get('/documents', function () {
         return Inertia::render('Voiceflow/Documents');
     })->name('documents');
-    
+
     Route::post('/documents/list', [VoiceflowDocumentController::class, 'getDocuments']);
     Route::post('/documents/upload', [VoiceflowDocumentController::class, 'uploadDocument']);
-});
 
+    // New routes for document management
+    Route::post('/documents/replace/{document}', [VoiceflowDocumentController::class, 'replaceDocument'])
+        ->name('documents.replace');
+    
+    Route::delete('/documents/{document}', [VoiceflowDocumentController::class, 'deleteDocument'])
+        ->name('documents.delete');
+
+    Route::get('/documents/chunk/{documentID}', [VoiceflowDocumentController::class, 'getDocumentChunk'])
+        ->name('documents.chunk');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
